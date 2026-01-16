@@ -1,0 +1,187 @@
+1. Confluence-
+Confluence is a team workspace where knowledge and collaboration meet. Dynamic pages give your team a place to create, capture, and collaborate on any project or idea.
+
+2. CMDB
+CMDB stands for Configuration Management Database. It is a centralized database that stores information about the configuration items (CIs) in an IT environment. A CI can refer to any component or item that is part of an IT infrastructure, including hardware, software, network devices, servers, applications, and more.
+
+
+Server-1 -> Inactive
+Key features and benefits of a CMDB include:
+
+1. Configuration Item Management
+2. Relationship Mapping
+3. Change and Incident Management
+4. Reporting and Analytics
+5. Integration with ITSM Tools
+
+CI - Configuration Items
+
+3. Checkmarx -
+Checkmarx is a software security company that provides solutions for identifying and fixing security vulnerabilities in software applications. They specialize in Static Application Security Testing (SAST), also known as static code analysis.
+Some key features of Checkmarx's CxSAST solution include:
+
+1. Static Code Analysis
+2. Wide Language Support
+3. Vulnerability Detection
+4. Integration with Development Tools
+5. Reporting and Remediation
+
+
+4. SonarQube -
+SonarQube is an open-source platform that provides continuous code quality management and static code analysis for various programming languages. It helps developers and teams identify and address code quality issues, security vulnerabilities throughout the software development lifecycle.
+Key features and capabilities of SonarQube include:
+
+1. Static Code Analysis
+2. Code Quality Metrics
+3. Security Vulnerability Detection
+4. Reporting and Dashboards
+5. Integration with Development Tools
+
+
+
+5. E2E Testing -
+To check responses from devops tools
+200 ok url - jenkins.infosys.com 
+             jfrog.infosys.com
+
+API Calls - swagger 
+
+
+
+6. OWASP (Open Web Application Security Project) -
+   DAST - Dynamic Application Security Testing -
+
+1. Vulnerability lists
+2. Security Resources
+3. Security testing framework
+
+
+OWASP highlights -
+1. Injection
+2. Broken Authentication
+3. Sensitive data Exposure
+4. Broken access control
+5. Insufficient logging & monitoring
+
+
+
+
+
+
+
+Cluster Roles- 
+AmazonEKSClusterPolicy
+AmazonEKSServicePolicy
+
+
+
+Nodegroup Roles-
+1. AmazonEKSWorkerNodePolicy
+2. AmazonEKS_CNI_Policy
+3. AmazonEC2ContainerRegistryReadOnly
+ 
+
+
+eksctl create cluster \
+  --name demo-cluster-31 \
+  --region us-east-2 \
+  --version 1.32 \
+  --nodegroup-name linux-nodes \
+  --node-type t2.medium \
+  --nodes 2 \
+  --nodes-min 2 \
+  --nodes-max 4 \
+  --managed
+
+
+Step 1: Check current cluster version - 
+
+aws eks describe-cluster \
+  --name demo-cluster-31 \
+  --region us-east-2 \
+  --query "cluster.version" \
+  --output text
+
+
+step 2 : Check supported upgrade versions
+
+aws eks describe-addon-versions \
+  --addon-name kube-proxy \
+  --region us-east-2 \
+  --query "addons[].addonVersions[].compatibilities[].clusterVersion" \
+  --output text | sort -u
+
+
+Step 3: Upgrade the EKS control plane
+
+aws eks update-cluster-version \
+  --name demo-cluster-31 \
+  --region us-east-2 \
+  --kubernetes-version 1.33
+
+
+Step 4: Upgrade eksctl / kubectl (optional but recommended)
+
+
+kubectl version --client
+
+aws eks describe-cluster \
+  --name demo-cluster-31 \
+  --region us-east-2 \
+  --query "cluster.version" \
+  --output text
+
+
+Step 5: Update Node Groups
+
+List nodegroups:
+
+eksctl get nodegroup --cluster demo-cluster-31 --region us-east-2
+
+
+Upgrade nodegroup(s):
+
+eksctl upgrade nodegroup \
+  --cluster demo-cluster-31 \
+  --name linux-nodes \
+  --region us-east-2
+
+
+Step 6: Verify Upgrade
+
+aws eks describe-cluster \
+  --name demo-cluster-31 \
+  --region us-east-2 \
+  --query "cluster.version" \
+  --output text
+
+
+kubectl get nodes -o wide
+
+
+Step 7 : Create a new node group -
+
+eksctl create nodegroup \
+  --cluster demo-cluster-31 \
+  --region us-east-2 \
+  --name linux-nodes-131 \
+  --node-type t2.medium \
+  --nodes 2 \
+  --nodes-min 2 \
+  --nodes-max 4 \
+  --managed
+
+
+kubectl get nodes -o wide
+
+
+Step 8 : Delete old node group -
+
+eksctl delete nodegroup \
+  --cluster demo-cluster-31 \
+  --region us-east-2 \
+  --name linux-nodes
+
+
+
+  
