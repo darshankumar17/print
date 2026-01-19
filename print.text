@@ -184,4 +184,638 @@ eksctl delete nodegroup \
 
 
 
+
+1. ImagePullBackOff: Verify the pull secrets are set correctly and double-check the image name and tag.
+ 2. CrashLoopBackOff: Review the container logs and make any necessary changes to resources or configurations. 
+3. ErrlmageNeverPul: Instead, set the policy for pulling images to Always or IfNotPresent.
+4. ImagePullError: Verify that your credentials and the image repository are accurate. 
+5. InvalidlmageName: Correct any errors in the tag and image name.
+6. DeploymentFailed: Verify that resources are available and review the deployment configuration.
+7. PodNotFound: Verify the accuracy of the pod name and namespace.
+8. ContainerCreating: Review the container setup and verify that the image is reachable. 
+9. DeadlineExceeded: Workload should be streamlined or the pod deadline extended. 
+10. FailedScheduling: Examine the pod's resource requests and node availability.
+11. Failed Validation: Fix any typos or configuration errors.
+12. InvalidConfig: Check the syntax and structure of the configuration file. 
+13. KubeletError: Examine the node's status and kubelet logs.
+14. MemoryLimitExceeded: Increase the memory limit or increase the productivity of the workload. 
+15. NodeNotReady: Check the availability and status of the node. 
+16. NodeUnreachable: Verify the node's network settings and connectivity. 
+17. PodDisruptionBudgetExceeded: Either improve workload management or modify the pod disruption budget.
+18. PodNotReady: Examine the state of the pod and make sure the container is ready. 
+19.ResourceQuotaExceeded: Either optimize the workload or raise the resource quota. 
+20. ServiceUnavailable: Verify that the service configuration is configured correctly.
+
+
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION - 1
+
+What is the difference between a Deployment and a ReplicaSet in Kubernetes?
+
+A Deployment is a higher-level object in Kubernetes that manages ReplicaSets. A Deployment ensures that a specified number
+ of replicas of a pod are running at all times, while a ReplicaSet simply ensures that a specified number of replicas of a
+ pod are running.
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION - 2
+
+What is a StatefulSet in Kubernetes?
+
+A StatefulSet is a Kubernetes object that manages stateful applications, such as databases, message brokers, and other stateful
+ applications that require persistent storage. Unlike a Deployment, a StatefulSet provides stable network identities, persistent 
+storage, and guarantees the order of deployment and scaling.
+
+
+
+
+
+
+
+KUBERNETES INTERVIEW QUESTION - 3
+
+A cluster administrator has a set of pods running a database that need to be accessed by other pods in the cluster.
+ What type of Service should the administrator use to allow the other pods to access the database?
+
+A StatefulSet is a Kubernetes object that manages stateful applications, such as databases, message brokers, and 
+other stateful applications that require persistent storage. Unlike a Deployment, a StatefulSet provides stable network 
+identities, persistent storage, and guarantees the order of deployment and scaling.
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION-4
+
+
+
+What happens when a Persistent VolumeClaim is deleted in Kubernetes?
+
+When a Persistent VolumeClaim is deleted in Kubernetes, the associated Persistent Volume is released,
+ and the storage resources that it represents are returned to the available storage pool. The data stored in the
+ PersistentVolume 
+is not deleted and can be recovered if necessary. However, the PersistentVolume itself is no longer bound to the Persistent 
+VolumeClaim, and the storage resources it represents are available for use PersistentVolumeClaims. by other
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION-5
+
+What is an Ingress in Kubernetes and what is it used for?
+
+An Ingress in Kubernetes is a resource that provides external access to services in the cluster.
+ Ingresses are used to provide external access to services in the cluster, and to provide load balancing,
+ SSL termination, and URL-based routing. Ingresses provide a way to manage external access to services in the cluster, 
+and to control how incoming traffic is handled and routed to the services.
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION-6
+
+
+
+A cluster administrator needs to expose a web application running in a pod to the internet. What type of Service 
+should the administrator use to accomplish this?
+
+A LoadBalancer Service should be used to expose the web application to the internet. LoadBalancer Services provide external
+ IP addresses that can be accessed from outside the cluster, making it easy to expose a web application running in a pod to the
+ internet.
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION-7
+
+A cluster administrator needs to expose a set of microservices to external clients, but also wants to keep the microservices
+ separate from each other. What type of Service should the administrator use to accomplish this?
+
+A NodePort Service should be used to expose the microservices to external clients, while keeping them separate from each other.
+ NodePort Services provide a way to expose individual pods to external clients, while still keeping them separate from each other
+ and isolated within the cluster. This makes it possible to expose a set of microservices to external clients while keeping them
+ separate and isolated from each other.
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION - 8
+
+A cluster administrator needs to provide a stable IP address for a set of replicas of a web application running in the cluster.
+ What type of Service should the administrator use to accomplish this?
+
+A ReplicationController or Deployment with a corresponding Clusterlp Service should be used to provide a stable IP address for 
+the replicas of the web application. A ReplicationController or Deployment can be used to manage the replicas of the web application,
+ while a ClusterIP Service can be used to provide a stable IP address for the replicas. This makes it easy to manage the replicas
+ of the web application and provide a stable IP address accessing them.
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION-9
+
+What is a Secret in Kubernetes and what is it used for?
+
+A Secret in Kubernetes is a resource that stores sensitive information, such as passwords, API keys, and SSL certificates,
+ in a secure manner. Secrets are used to store sensitive information that is needed ded by the applications running in the cluster,
+ such as database credentials and API keys. Secrets provide a way to manage sensitive information, ensuring that the information is
+ stored securely and can be accessed only by the pods that need it.
+
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION - 10
+
+Interview Q&A
+
+What is a Job in Kubernetes and what is it used for?
+
+A Job in Kubernetes is a resource that runs a specified number of pods to completion, ensuring that the specified number 
+of successful completions is achieved. Jobs are used to run batch jobs, such as data processing and image rendering, in the cluster.
+ Jobs provide a way to run batch jobs in the cluster, en
+
+
+
+
+
+KUBERNETES INTERVIEW QUESTION - 12
+
+What is a DaemonSet in Kubernetes?
+
+Intervis
+
+A DaemonSet is a Kubernetes object that ensures a single instance of a pod is running on each node in a cluster.
+ This is useful for deploying system-level services, such as log collectors, node-level monitoring agents, and other utilities
+ that need to run on every node.
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION - 13
+
+What is the Kubernetes control plane?
+
+The Kubernetes control plane is a set of components that manage the state of a cluster, including the API server,
+ controller manager, and scheduler. The API frontend for the Kubernetes server is the control plane and exposes the 
+RESTful API for managing the cluster, the controller manager is responsible for managing the state cluster, and the scheduler
+ is on nodes in the cluster. of various objects in the responsible for scheduling pods
+
+
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION - 14
+
+A cluster administrator has a set of pods running a web application that need to communicate with each other.
+ What type of Service should the administrator use to allow the pods to communicate with each other?
+
+A ClusterIP Service should be used to allow the pods running the web application to communicate with each other.
+ ClusterIP Services provide a stable IP address for a group of pods within the cluster, making it easy to set up 
+communication between pods. By using a Clusterip Service, the administrator can provide a stable IP address for the pods 
+running the web application, which the pods can use to communicate with each
+
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION - 16
+
+Interview Q&
+
+A cluster administrator is running a web application that needs to be accessed by external clients over the internet. 
+What type of Service should the administrator use to accomplish this?
+
+A Load Balancer Service should be used to expose the web application to external clients over the internet. Load Balancer 
+Services provide external IP addresses that can be accessed from outside the cluster, making it easy to expose a web application
+ running in the cluster to the internet. By using a Load Balancer Service, the administrator can provide external access to the
+ web application, making it possible for external clients to access the application over the internet.
+ 
+
+
+
+
+
+
+KUBERNETES INTERVIEW QUESTION - 17
+
+Inte
+
+What is a Namespace in Kubernetes and why is it used?
+
+A Namespace in Kubernetes is a virtual cluster within a cluster, and it is used to divide resources and limit scope in a cluster.
+ Namespaces allow you to isolate resources and enforce resource quotas, and they are used to provide environment-specific resources,
+ such as development, testing, and production environments. Multiple namespaces can be used to partition resources in a cluster and
+ enforce access controls between teams and environments.
+
+
+
+
+
+KUBERNETES INTERVIEW QUESTION - 18
+
+What is a Pod in Kubernetes and what is it used for?
+
+A Pod in Kubernetes is the smallest and simplest unit in the cluster, representing a single instance of a running process.
+ Pods are used to host the containers that run the applications and services in the cluster. Pods provide a way to manage
+ the deployment and execution of containers in the cluster, making it easier to manage the scaling, placement, and lifecycle
+ of the containers.
+
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION-22
+
+A cluster administrator needs to provide stable IP addresses for a group of stateful pods in the cluster. 
+What type of Service
+ should the administrator use to accomplish this?
+
+A Headless Service should be used to provide stable IP addresses for a group of stateful pods. Headless Services do not provide
+ de a stable IP address for the Service as a whole, but instead provide stable IP addresses for each individual pod that is part 
+of the Service. This makes it easy to provide stable IP addresses for stateful pods, which can be used for communication between
+ pods.
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION-23
+
+03
+
+What is a Horizontal Pod Autoscaler (HPA) in Kubernetes and what is its purpose?
+
+The Horizontal Pod Autoscaler (HPA) in Kubernetes is a built- in tool that automatically adjusts the number of 
+replicas of a deployment, based on observed CPU utilization or other custom metrics. The purpose of HPA is to ensure that 
+a deployment has enough resources to handle incoming traffic, and it helps to maintain the desired performance levels of deployment.
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION-24
+
+What is Ingress in Kubernetes and what is it used for?
+
+Ingress in Kubernetes is a resource that defines a set of rules for incoming traffic to reach the services in a cluster.
+ It is used to expose services to the external network, and it provides a single entry point for external traffic into the cluster.
+ Ingress can be used to perform routing, load balancing, and SSL termination for incoming traffic.
+
+ 
+
+
+
+
+KUBERNETES INTERVIEW QUESTION - 25
+
+What is a Cluster Role in Kubernetes and what is it used for?
+
+A ClusterRole in Kubernetes is a resource that defines a set of permissions that can be granted to a user or group in 
+a cluster-wide context. It is used to manage access to the cluster-level resources and APIs, and it can be be used to 
+enforce least privilege policies. Cluster Roles can be used to access control o grant permissions for users to manage
+ objects and perform actions in the cluster, such as creating, updating, and deleting resources.
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION-26
+
+
+
+A cluster administrator is running a stateful application in the cluster and needs to provide stable IP addresses for the pods
+ running the application. What type of Service should the administrator use to accomplish this?
+
+A Headless Service should be used to provide stable, IP addresses for the pods running the stateful application.
+ Headless Services provide stable IP addresses for each individual pod, rather than for the Service as a whole. 
+This makes it possible to provide applications, which rely stable IP addresses for stateful n stable n on network
+ connections between pods. By using a Headless Service, the administrator can provide stable IP addresses for the
+ pods running the stateful application, ensuring that the pods other in a stable and can communicate with each predictable manner.
+
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION - 27
+
+What is a Persistent Volume (PV) and a Persistent Volume Claim (PVC) in Kubernetes and what are they used for?
+
+A Persistent Volume (PV) in Kubernetes is a resource that represents a piece persistent storage of storage in a cluster.
+ for pods, and it It is used to provide can be backed by local storage, network-attached storage, or cloud storage. 
+A Persistent Volume Claim (PVC) in Kubernetes is a request for storage.m age made by a pod, and it is used to claim 
+a PV and mount it as a volume in the pod. PVCs and PVs are used together to provide persistent storage for stateful applications
+ in a cluster.
+
+
+
+
+
+KUBERNETES INTERVIEW QUESTION-28
+
+How does Kubernetes manage storage for containers?
+
+Kubernetes manages storage for containers using Persistent Volumes (PVs) and Persistent Volume Claims (PVCs).
+ PVs represent a piece of storage in a cluster, and PVCs are requests for storage made by pods. Pods use PVCs
+ to claim PVs and mount them as volumes in the pod, providing persistent storage for containers.
+
+
+
+
+KUBERNETES INTERVIEW QUESTION-29
+
+Interview QGA
+
+What is a Service Account in Kubernetes and what is it used for?
+
+A ServiceAccount in Kubernetes is a resource that represents an identity for processes running inside a pod.
+ It is used to grant permissions to pods to access the API server and other cluster resources. ServiceAccounts can be used to
+ enforce least privilege access control policies and isolate resources within a cluster.
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION - 30
+
+How does Kubernetes perform rolling updates and rollbacks of applications?
+
+Kubernetes performs rolling updates and rollbacks of applications using deployment resources. Deployments allow you to
+ declaratively update a set of replicas, and they provide a history of all updates made to the deployment. To a rolling update,
+ you update the desired state of the deployment, and Kubernetes gradually updates the replicas in the deployment to the new state.
+ To perform a rollback, you revert to a previous revision of the deployment, and Kubernetes gradually updates the replicas to the
+ previous
+
+
+
+
+
+
+
+KUBERNETES INTERVIEW QUESTION-32
+
+How does Kubernetes perform load balancing for applications?
+
+Kubernetes performs load balancing for applications using services. A service in Kubernetes is an abstraction over a set of
+ pods that provides a stable IP address and DNS name. Services expose pods to the network and en a client perform load balancing 
+across the pods. When a makes a request to a service, the service load balances the request to one of the pods.
+
+
+
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION - 34
+
+Interview Q&A
+
+A cluster administrator needs to provide a stable IP address for a database that is running in a pod. What type of Service 
+should the administrator use to accomplish this?
+
+A ClusterIP Service should be used to provide a stable IP address for the database pod. ClusteriP Services provide stable IP
+ addresses for pods within the cluster, making it easy to provide stable IP addresses for databases and other critical applications
+ running in the cluster.
+
+
+
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION-35
+
+What is an ingress in Kubernetes and what is it used for?
+
+An ingress in Kubernetes is a resource that allows external traffic to reach the services in a cluster. It defines rules for routing
+ incoming HTTP and HTTPS traffic to services in the cluster. Ingress provides a way to expose multiple services under a single IP
+ address and DNS name, and it provides features such as SSL termination and URL-based routing.
+
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION - 36
+
+Interview Q&A
+
+What is an admission controller in Kubernetes and what is it used for?
+
+An admission controller in Kubernetes is a pluggable component that intercepts requests to the API server and performs checks
+ and validations on the incoming requests. Admission controllers are used to enforce policies and constraints on resources
+ in the cluster, such as validating resource specifications and enforcing access control policies.
+
+
+
+
+
+
+KUBERNETES INTERVIEW QUESTION - 37
+
+How does Kubernetes perform rolling updates for applications?
+
+Kubernetes performs rolling updates for applications using the concept of Deployments. A Deployment in Kubernetes is a higher-level
+ resource that manages a set of replicas of a single application. When you update a Deployment, it creates new replicas with the 
+updated version of the application and gradually replaces the old replicas with the new ones, one at a time. This rolling update 
+process process ensures that there is no downtime for the application during the update.
+
+
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION - 40
+
+What is a pod security policy in Kubernetes and what is it used for?
+
+A pod security policy in Kubernetes is a resource that defines the security requirements for pods in the cluster.
+ Pod security policies are used to control the security context of pods, and to define the security constraints 
+for containers in the pods. Pod security policies provide a way to enforce security best practices for containers,
+ and to ensure that pods meet specific security requireme
+
+
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION -42
+
+Int
+
+Imagine you are creating a deployment in Kubernetes that needs to run a container image and set some environment variables.
+ How would you specify the environment variables using key notation in a YAML file?
+
+A possible answer to this question would be:
+
+apiVersion: apps/v1
+
+kind: Deployment metadata:
+
+name: my-deployment
+
+spec
+
+replicas: 3 selector:
+
+matchLabels:
+
+app: my-app template
+
+metadata: labels
+
+app: my-app
+
+spec: containers:
+
+name: my-container
+
+Image: my-image env
+
+name: ENV VAR 1 value: "value"
+
+name: ENV VAR 2 value: "value"
+
+In this example, the environment variables are specified using the env key. The key-value pairs of name and value 
+specify the name and value of each environment varia
+
+
+
+
+
+
+
+
+KUBERNETES INTERVIEW QUESTION - 43
+
+Interview Q&A
+
+AR
+
+Imagine you have two microservices, "Service A" and "Service B", that need to communicate with each other in a
+ Kubernetes cluster. How would you create a service in Kubernetes to expose "Service B to Service A?
+
+A possible answer to this question would be:
+
+10:18
+
+apiVersion: v1 kind: Service
+
+metadata:
+
+name: service-b
+
+9:06
+
+spec selector:
+
+app: service-b
+
+ports:
+
+name: http port: 80
+
+targetPort: 8080
+
+type: Clusterip
+
+In this example, a Service object is created using the YAML file above. The selector key is used to specify the 
+labels that identify the pods running Service B. The ports key specifies that "Service B listens on port 8080 and is exposed 
+to the cluster on port 80. The type key is set to Clusterip, which means the service is only accessible within the cluster and not 
+externally.
+
+
+With this service in place, "Service A can communicate with "Service B using the DNS name service-b within the
+
+
+
+
+
+
+KUBERNETES INTERVIEW QUESTION - 44
+
+What is a Job in Kubernetes and when is it used?
+
+A Job in Kubernetes is a higher-level object used to run batch jobs that complete a specific task. Jobs are used to run one or
+ more pods to completion, and they are designed for short-lived, parallel, and fault-tolerant workloads. Jobs are used to perform
+ tasks such as data processing, backups, and other batch operations.
+
+
+
+
+
+
+ KUBERNETES INTERVIEW QUESTION - 45
+
+What is a Kubernetes operator and what is it used for?
+
+A Kubernetes operator is a custom controller that extends the Kubernetes API to automate the deployment, management, and
+ scaling of a specific application or component. Operators are used to automate complex tasks, such as provisioning and managing 
+databases, and to provide a way to manage custom resources in the cluster. Operators provide a way to automate and manage the 
+lifecycle of applications and components in the cluster, making it easier to deploy, manage, and scale these resources.
+ 
+
+
+
+
+
+
+KUBERNETES INTERVIEW QUESTION - 46
+
+Imagine you are responsible for upgrading a Kubernetes cluster from version 1.20 to version 1.21. How would you approach this
+ task to minimize downtime and ensure the cluster remains available during the upgrade process?
+
+A possible answer to this question would be:
+
+1.
+
+Plan and prepare: Before starting the upgrade process, ensure
+
+that have a
+
+plan in place and understand the upgrade
+
+process. Check the release notes and any Knoten issues
+
   
